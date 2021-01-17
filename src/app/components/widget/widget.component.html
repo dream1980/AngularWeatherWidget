@@ -1,0 +1,44 @@
+<div class="card widget">
+    <div class="card-header">
+      Weather
+    </div>  
+  
+    <div class="container">
+      <div>
+        <select class="dropdown-list" (change)="handleChange($event)">
+          <option>Select city...</option>
+          <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>          
+        </select>
+        &nbsp;
+        <button type="button" class="btn btn-primary" (click)="handleUpdate()">Update</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="weather" *ngIf="currentWeather.temp != 0">
+        <div class="weather-name">&nbsp;&nbsp;{{ currentWeather.name }}</div>
+
+        <div class="weather-middle">
+            <div class="float-start">
+                <img src="{{ getIconUrl(currentWeather.icon) }}">
+            </div>
+            
+            <div class="weather-temp">
+                {{ currentWeather.temp }} <span size=1>O</span>
+            </div>
+            
+            <div class="weather-desc float-end">
+                {{ currentWeather.description }}
+            </div>
+        </div>
+
+        <div class="weather-bottom">
+            <div class="weather-bottom-left w-50">Humidity:&nbsp;{{ currentWeather.humidity }}</div>
+
+            <div class="weather-bottom-right w-50">Air Pressure:&nbsp;{{ currentWeather.pressure }}</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
